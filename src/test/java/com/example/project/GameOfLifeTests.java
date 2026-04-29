@@ -21,4 +21,15 @@ public class GameOfLifeTests {
         Neighbor n2 = new Neighbor();
         n1.addNeighbor(n2);
     }
+
+    @Test
+    void cellLivingTest() {
+        Cell c = new Cell();
+        c.birth();
+        assert(c.isLiving());
+        c.kill();
+        assert(!c.isLiving());
+        c.toggle();
+        assert(c.isLiving());
+    }
 }

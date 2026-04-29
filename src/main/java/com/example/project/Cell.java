@@ -18,4 +18,13 @@ public class Cell extends Neighbor {
     public void toggle() {
         alive = !alive;
     }
+
+    @Override
+    public void informNeighbors() {
+        if (alive) {
+            for (int i = 0; i < neighborCount; i++) {
+                neighborhood[i].beInformedOfLife();
+            }
+        }
+    }
 }

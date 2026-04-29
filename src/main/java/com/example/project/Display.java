@@ -1,9 +1,10 @@
 package com.example.project;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
-public class Display extends JFrame {
+public class Display extends JFrame implements KeyListener {
     public static int CELL_SIZE = 16;
     public static int BUTTON_HEIGHT = 200;
 
@@ -16,6 +17,7 @@ public class Display extends JFrame {
         initializeWindow();
         setLayout(new BorderLayout());
         addComponents();
+        addListeners();
     }
 
     private void initializeWindow() {
@@ -36,4 +38,23 @@ public class Display extends JFrame {
         cells = new CellDisplay(width, height - BUTTON_HEIGHT);
         add(cells);
     }
+
+    public void addListeners() {
+        addKeyListener(this);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        int val = e.getKeyChar();
+
+        if (val == 27) { // esc
+            System.exit(0);
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {}
+
+    @Override
+    public void keyReleased(KeyEvent e) {}
 }

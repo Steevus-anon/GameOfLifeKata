@@ -1,5 +1,5 @@
 package com.example.project;
 
-public class Cell {
+public class Cell extends Neighbor {
     
 }

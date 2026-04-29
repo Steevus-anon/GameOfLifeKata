@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'eclipse' // optional (to generate Eclipse project files)
 	id 'idea' // optional (to generate IntelliJ IDEA project files)
+	id 'application'
 }
 
 repositories {
@@ -20,4 +21,8 @@ test {
 		events "passed", "skipped", "failed"
 		showStandardStreams = true
 	}
+}
+
+application {
+	mainClass = 'com.example.project.GameOfLife'
 }

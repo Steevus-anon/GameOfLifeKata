@@ -32,4 +32,17 @@ public class GameOfLifeTests {
         c.toggle();
         assert(c.isLiving());
     }
+
+    @Test
+    void informNeighborsTest() {
+        Neighbor n = new Neighbor();
+        Cell c = new Cell();
+        c.birth();
+        n.addNeighbor(c);
+        c.addNeighbor(n);
+        n.informNeighbors();
+        c.informNeighbors();
+        assertEquals(1, n.getLiveNeighborCount());
+        assertEquals(0, c.getLiveNeighborCount());
+    }
 }

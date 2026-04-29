@@ -6,12 +6,19 @@ import org.junit.jupiter.api.*;
 public class GameOfLifeTests {
     @Test
     void initializeWindowTest() {
-        GameOfLife g = new GameOfLife();
+        new GameOfLife();
     }
 
     @Test
     void neighborAndCellExists() {
-        Neighbor n = new Neighbor();
-        Cell c = new Cell();
+        new Neighbor();
+        new Cell();
+    }
+
+    @Test
+    void addNeighborsTest() {
+        Neighbor n1 = new Neighbor();
+        Neighbor n2 = new Neighbor();
+        n1.addNeighbor(n2);
     }
 }

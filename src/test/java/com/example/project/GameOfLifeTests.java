@@ -45,4 +45,11 @@ public class GameOfLifeTests {
         assertEquals(1, n.getLiveNeighborCount());
         assertEquals(0, c.getLiveNeighborCount());
     }
+
+    @Test
+    void initializeCellArrayTest() {
+        CellArray myCellArray = new CellArray(5, 5);
+        Neighbor internalArray[][] = myCellArray.getInternalArray();
+        assertEquals(7, internalArray.length);
+    }
 }

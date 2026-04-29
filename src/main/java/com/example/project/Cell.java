@@ -1,7 +1,7 @@
 package com.example.project;
 
 public class Cell extends Neighbor {
-    private boolean alive;
+    private boolean alive = false;
 
     public boolean isLiving() {
         return alive;

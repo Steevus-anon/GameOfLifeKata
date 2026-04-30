@@ -1,7 +1,7 @@
 package com.example.project;
 
 public class Neighbor {
-    protected Neighbor neighborhood[] = new Neighbor[4];
+    protected Neighbor neighborhood[] = new Neighbor[8];
     protected int neighborCount = 0;
     protected int livingNeighbors = 0;
 

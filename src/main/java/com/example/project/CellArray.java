@@ -1,8 +1,9 @@
 package com.example.project;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
-public class CellArray {
+public class CellArray implements Iterable<Cell> {
     private Cell internalArray[][];
     private int width;
     private int height;
@@ -43,5 +44,32 @@ public class CellArray {
         }
 
         return output;
+    }
+
+    @Override
+    public Iterator<Cell> iterator() {
+        return new CellArrayIterator();
+    }
+
+    class CellArrayIterator implements Iterator<Cell> {
+        private int x = 0;
+        private int y = 0;
+
+        @Override
+        public boolean hasNext() {
+            return width - x != 1 || height - y != 1;
+        }
+
+        @Override
+        public Cell next() {
+            y++;
+
+            if (y == height) {
+                x++;
+                y = 0;
+            }
+
+            return internalArray[x][y];
+        }
     }
 }

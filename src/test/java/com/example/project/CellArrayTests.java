@@ -31,4 +31,19 @@ public class CellArrayTests {
         cells.iterate();
         assertEquals("[1, 1]\n[1, 1]\n", cells.toString());
     }
+
+    @Test
+    void gliderTest() {
+        CellArray cells = new CellArray(4, 4);
+        cells.toggleMultiple(
+            2, 0,
+            0, 1,
+            2, 1,
+            1, 2,
+            2, 2
+        );
+        cells.iterate();
+        String s = cells.toString();
+        assertEquals("[0, 0, 0, 0]\n[1, 0, 1, 0]\n[0, 1, 1, 0]\n[0, 1, 0, 0]\n", s);
+    }
 }

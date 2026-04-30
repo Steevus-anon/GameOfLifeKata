@@ -52,4 +52,12 @@ public class GameOfLifeTests {
         Neighbor internalArray[][] = myCellArray.getInternalArray();
         assertEquals(7, internalArray.length);
     }
+
+    @Test
+    void toggleCellInArray() {
+        CellArray myCellArray = new CellArray(3, 3);
+        myCellArray.toggleCell(0, 0);
+        String s = myCellArray.toString();
+        assertEquals("[1, 0, 0]\n[0, 0, 0]\n[0, 0, 0]\n", s);
+    }
 }

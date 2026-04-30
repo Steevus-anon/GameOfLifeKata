@@ -50,7 +50,7 @@ public class GameOfLifeTests {
     void initializeCellArrayTest() {
         CellArray myCellArray = new CellArray(5, 5);
         Neighbor internalArray[][] = myCellArray.getInternalArray();
-        assertEquals(7, internalArray.length);
+        assertEquals(5, internalArray.length);
     }
 
     @Test

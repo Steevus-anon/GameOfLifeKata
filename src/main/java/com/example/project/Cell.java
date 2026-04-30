@@ -27,4 +27,9 @@ public class Cell extends Neighbor {
             }
         }
     }
+
+    public String toString() {
+        if (alive) return "1";
+        return "0";
+    }
 }

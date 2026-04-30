@@ -11,6 +11,6 @@ public class CellDisplay extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        g.fillRect(0, 0, Display.CELL_SIZE, Display.CELL_SIZE);
+        g.fillRect(0, 0, GameOfLife.CELL_SIZE, GameOfLife.CELL_SIZE);
     }
 }

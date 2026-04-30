@@ -28,6 +28,16 @@ public class Cell extends Neighbor {
         }
     }
 
+    public void iterate() {
+        if (alive) {
+            if (livingNeighbors < 2 || livingNeighbors > 3) {
+                kill();
+            }
+        } else if (livingNeighbors == 3) {
+            birth();
+        }
+    }
+
     public String toString() {
         if (alive) return "1";
         return "0";

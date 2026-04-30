@@ -11,24 +11,37 @@ public class CellArray implements Iterable<Cell> {
     public CellArray(int width, int height) {
         this.width = width;
         this.height = height;
-        internalArray = new Cell[width][height];
-        populateArray();
-    }
-
-    private void populateArray() {
-        for (int x = 0; x < width; x++) {
-            populateColumn(x);
-        }
-    }
-
-    private void populateColumn(int x) {
-        for (int y = 0; y < height; y++) {
-            internalArray[x][y] = new Cell();
-        }
+        CellArrayConstructor constr = new CellArrayConstructor(width, height);
+        internalArray = constr.getArray();
     }
 
     public void toggleCell(int x, int y) {
         internalArray[x][y].toggle();
+    }
+
+    public void toggleMultiple(int ... args) {
+        for (int i = 0; i < args.length; i += 2) {
+            int x = args[i];
+            int y = args[i + 1];
+            toggleCell(x, y);
+        }
+    }
+
+    public void iterate() {
+        informAllCells();
+        iterateAllCells();
+    }
+
+    private void informAllCells() {
+        for (Cell c : this) {
+            c.informNeighbors();
+        }
+    }
+
+    private void iterateAllCells() {
+        for (Cell c : this) {
+            c.iterate();
+        }
     }
 
     public Cell[][] getInternalArray() {

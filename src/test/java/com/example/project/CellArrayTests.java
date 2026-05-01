@@ -12,6 +12,17 @@ public class CellArrayTests {
     }
 
     @Test
+    void invalidCellArrayTest() {
+        assertThrows(
+            NegativeArraySizeException.class, 
+            () -> {
+                new CellArray(-1, -1);
+            },
+            "Dimensions of CellArray must be >=0"
+        );
+    }
+
+    @Test
     void toggleCellInArray() {
         CellArray cells = new CellArray(3, 3);
         cells.toggleCell(0, 0);

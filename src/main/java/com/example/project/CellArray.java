@@ -44,6 +44,12 @@ public class CellArray implements Iterable<Cell> {
         }
     }
 
+    public void reset() {
+        for (Cell c : this) {
+            c.kill();
+        }
+    }
+
     public Cell[][] getInternalArray() {
         return internalArray;
     }

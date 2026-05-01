@@ -64,8 +64,11 @@ public class GameOfLife extends JFrame implements KeyListener, MouseListener {
             System.exit(0);
         } else if (val == 32) { // space
             cells.iterate();
-            update();
+        } else if (val == 114) { // r
+            cells.reset();
         }
+
+        update();
     }
 
     @Override

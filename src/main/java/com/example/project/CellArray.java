@@ -66,7 +66,7 @@ public class CellArray implements Iterable<Cell> {
 
     class CellArrayIterator implements Iterator<Cell> {
         private int x = 0;
-        private int y = 0;
+        private int y = -1;
 
         @Override
         public boolean hasNext() {

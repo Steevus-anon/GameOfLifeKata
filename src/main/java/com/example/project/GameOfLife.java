@@ -8,7 +8,6 @@ public class GameOfLife extends JFrame implements KeyListener, MouseListener {
     public static int CELL_COLUMNS = 50;
     public static int CELL_ROWS = 50;
     public static int CELL_SIZE = 16;
-    public static int BUTTON_HEIGHT = 200;
 
     private int width;
     private int height;
@@ -38,18 +37,18 @@ public class GameOfLife extends JFrame implements KeyListener, MouseListener {
 
     private void determineSize() {
         width = CELL_SIZE * CELL_COLUMNS;
-        height = CELL_SIZE * CELL_ROWS + BUTTON_HEIGHT;
+        height = CELL_SIZE * CELL_ROWS;
         setSize(width, height);
     }
 
     public void addComponents() {
-        display = new CellDisplay(cells, width, height - BUTTON_HEIGHT);
+        display = new CellDisplay(cells, width, height);
         add(display);
     }
 
     public void addListeners() {
         addKeyListener(this);
-        addMouseListener(this);
+        display.addMouseListener(this);
     }
 
     private void update() {
@@ -71,18 +70,18 @@ public class GameOfLife extends JFrame implements KeyListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        int screenX = e.getX(),
-            x = screenX / CELL_SIZE;
-        int screenY = e.getY(),
-            y = screenY / CELL_SIZE;
-        if (!areCoordsOnScreen(screenX, screenY)) return;
-        cells.toggleCell(x, y);
-        update();
+        int x = e.getX() / CELL_SIZE;
+        int y = e.getY() / CELL_SIZE;
+            
+        if (areCoordsOnScreen(x, y)) {
+            cells.toggleCell(x, y);
+            update();
+        }
     }
 
     private boolean areCoordsOnScreen(int x, int y) {
         if (x < 0 || y < 0) return false;
-        if (x >= width || y >= display.getHeight()) return false;
+        if (x >= CELL_COLUMNS || y >= CELL_ROWS) return false;
         return true;
     }
 

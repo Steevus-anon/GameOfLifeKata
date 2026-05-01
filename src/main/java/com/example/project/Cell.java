@@ -36,6 +36,8 @@ public class Cell extends Neighbor {
         } else if (livingNeighbors == 3) {
             birth();
         }
+
+        resetLivingNeighbors();
     }
 
     public String toString() {

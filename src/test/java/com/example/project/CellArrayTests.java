@@ -46,4 +46,17 @@ public class CellArrayTests {
         String s = cells.toString();
         assertEquals("[0, 0, 0, 0]\n[1, 0, 1, 0]\n[0, 1, 1, 0]\n[0, 1, 0, 0]\n", s);
     }
+
+    @Test
+    void resetTest() {
+        CellArray cells = new CellArray(2, 2);
+        cells.toggleMultiple(
+            0, 0,
+            0, 1,
+            1, 0,
+            1, 1
+        );
+        cells.reset();
+        assertEquals("[0, 0]\n[0, 0]\n", cells.toString());
+    }
 }

@@ -76,13 +76,13 @@ public class GameOfLife extends JFrame implements KeyListener, MouseListener {
         int x = e.getX() / CELL_SIZE;
         int y = e.getY() / CELL_SIZE;
             
-        if (areCoordsOnScreen(x, y)) {
+        if (isPositionValid(x, y)) {
             cells.toggleCell(x, y);
             update();
         }
     }
 
-    private boolean areCoordsOnScreen(int x, int y) {
+    private boolean isPositionValid(int x, int y) {
         if (x < 0 || y < 0) return false;
         if (x >= CELL_COLUMNS || y >= CELL_ROWS) return false;
         return true;

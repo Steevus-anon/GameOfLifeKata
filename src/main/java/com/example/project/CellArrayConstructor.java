@@ -14,14 +14,14 @@ public class CellArrayConstructor {
 
     private int width;
     private int height;
-    private Cell[][] array;
+    private Cell[][] output;
 
     public CellArrayConstructor(int width, int height) {
         this.width = width;
         this.height = height;
-        array = new Cell[width][height];
+        output = new Cell[width][height];
         populateArray();
-        linkCells();
+        addNeighbors();
     }
 
     private void populateArray() {
@@ -32,24 +32,24 @@ public class CellArrayConstructor {
 
     private void populateColumn(int x) {
         for (int y = 0; y < height; y++) {
-            array[x][y] = new Cell();
+            output[x][y] = new Cell();
         }
     }
 
-    private void linkCells() {
+    private void addNeighbors() {
         for (int x = 0; x < width; x++) {
-            linkCellsInColumn(x);
+            addNeighborsForColumn(x);
         }
     }
 
-    private void linkCellsInColumn(int x) {
+    private void addNeighborsForColumn(int x) {
         for (int y = 0; y < height; y++) {
-            linkIndividualCell(x, y);
+            addNeighborsForIndividual(x, y);
         }
     }
 
-    private void linkIndividualCell(int x, int y) {
-        Cell c = array[x][y];
+    private void addNeighborsForIndividual(int x, int y) {
+        Cell c = output[x][y];
 
         for (int[] pos : POSSIBLE_NEIGHBORS) {
             addNeighborIfValid(c, x + pos[0], y + pos[1]);
@@ -58,7 +58,7 @@ public class CellArrayConstructor {
 
     private void addNeighborIfValid(Cell c, int x, int y) {
         if (!isValidPosition(x, y)) return;
-        c.addNeighbor(array[x][y]);
+        c.addNeighbor(output[x][y]);
     }
 
     private boolean isValidPosition(int x, int y) {
@@ -68,6 +68,6 @@ public class CellArrayConstructor {
     }
 
     public Cell[][] getArray() {
-        return array;
+        return output;
     }
 }
